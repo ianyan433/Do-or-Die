@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>废土求生 · 文字生存日记</title>
+    <title>废土求生</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,34 +11,31 @@
         }
 
         body {
-            background: linear-gradient(145deg, #0a1f1e 0%, #071513 100%);
+            background: linear-gradient(145deg, #07100e 0%, #030807 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', 'Courier New', 'SF Mono', 'Fira Code', monospace;
-            padding: 20px;
+            font-family: 'Segoe UI', 'Courier New', 'Fira Code', monospace;
+            padding: 16px;
             margin: 0;
         }
 
-        /* 游戏主卡牌 */
-        .game-container {
-            max-width: 600px;
+        .game-wrapper {
+            max-width: 650px;
             width: 100%;
             background: #0f2a24;
-            background-image: radial-gradient(circle at 10% 20%, rgba(70, 50, 30, 0.2) 2%, transparent 2.5%);
+            background-image: radial-gradient(circle at 20% 30%, rgba(80, 60, 35, 0.2) 1.5%, transparent 2%);
             background-size: 28px 28px;
-            border-radius: 48px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border-radius: 44px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 200, 0.08);
             overflow: hidden;
-            backdrop-filter: blur(0px);
-            border: 1px solid #6c4e2e;
+            border: 1px solid #7e5e38;
         }
 
-        /* 标题区 */
         .game-header {
-            background: #000000aa;
-            padding: 1.2rem 1rem;
+            background: #040e0cee;
+            padding: 1rem 1rem 0.8rem;
             text-align: center;
             backdrop-filter: blur(6px);
             border-bottom: 2px solid #e2b13b;
@@ -46,79 +43,92 @@
 
         .game-header h1 {
             margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
             font-weight: 800;
-            background: linear-gradient(135deg, #f5d742, #c57c1a);
+            background: linear-gradient(135deg, #f7d44a, #d98d2b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .sub {
-            font-size: 0.7rem;
-            color: #cdb17e;
-            margin-top: 5px;
-            font-family: monospace;
+            font-size: 0.65rem;
+            color: #c7aa6e;
+            margin-top: 4px;
         }
 
-        /* 状态面板 (生存指标) */
+        /* 状态卡片 */
         .stats-panel {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            background: #1a2f2bcc;
-            padding: 14px 18px;
-            gap: 12px;
-            border-bottom: 1px solid #8b6946;
+            background: #142b25cc;
+            padding: 12px 16px;
+            gap: 8px;
+            border-bottom: 1px solid #ab824a;
         }
 
         .stat-card {
-            background: #0b1c19;
-            border-radius: 32px;
-            padding: 6px 15px;
-            min-width: 80px;
+            background: #071c18;
+            border-radius: 30px;
+            padding: 4px 14px;
+            min-width: 70px;
             text-align: center;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5), 0 2px 3px rgba(0,0,0,0.3);
-            border-left: 3px solid #f5bc70;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 2px 3px rgba(0,0,0,0.2);
+            border-left: 2px solid #f5bc70;
         }
 
         .stat-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #b9ae8a;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: #cfc28c;
         }
 
         .stat-value {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
-            color: #f7d44a;
+            color: #fedb5f;
             line-height: 1;
-            font-family: monospace;
         }
 
-        .stat-unit {
-            font-size: 12px;
-            color: #c2a156;
+        /* 成就栏 */
+        .achievement-bar {
+            background: #1a2e28;
+            padding: 6px 12px;
+            font-size: 11px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid #5e4a2e;
+            color: #eedb9b;
+            align-items: center;
         }
 
-        /* 日志区 (文字冒险核心) */
+        .achieve-badge {
+            background: #2a3a32;
+            border-radius: 20px;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 日志区 */
         .log-area {
             background: #03100ed9;
-            margin: 18px 18px 12px 18px;
+            margin: 14px 16px 8px 16px;
             border-radius: 28px;
-            padding: 18px 14px;
+            padding: 16px 14px;
             min-height: 280px;
             max-height: 340px;
             overflow-y: auto;
-            font-family: 'Courier New', 'Fira Code', monospace;
             font-size: 13px;
             line-height: 1.45;
-            color: #e7f2d9;
-            box-shadow: inset 0 0 12px #00000033, 0 4px 12px black;
-            scroll-behavior: smooth;
+            color: #eef4db;
+            box-shadow: inset 0 0 12px #00000044, 0 4px 12px black;
         }
 
         .log-entry {
@@ -128,33 +138,72 @@
             animation: fadeIn 0.2s ease;
         }
 
-        .log-date {
-            color: #dba342;
-            font-weight: bold;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .log-text {
-            word-break: break-word;
-        }
-
-        .event-bad {
+        .log-entry.event-bad {
             border-left-color: #e34d4d;
-            color: #ffbf9f;
+            color: #ffcfb5;
         }
 
-        .event-good {
+        .log-entry.event-good {
             border-left-color: #6fcf97;
-            color: #d0f0c0;
+            color: #caf0cf;
         }
 
-        /* 行动按钮区 */
+        .log-entry.event-choice {
+            border-left-color: #e2b13b;
+            background: #1f2e26;
+            padding: 6px 10px;
+            border-radius: 14px;
+        }
+
+        /* 商店面板 (浮动/隐藏) */
+        .shop-panel {
+            background: #161d1be6;
+            margin: 8px 16px 12px 16px;
+            border-radius: 36px;
+            padding: 10px 12px;
+            backdrop-filter: blur(8px);
+            border: 1px solid #c9a455;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .shop-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #ffda88;
+            text-align: center;
+        }
+
+        .shop-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .shop-item {
+            background: #2e423a;
+            border-radius: 60px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.05s linear;
+            color: #fbefc7;
+            border: 1px solid #c4a25b;
+        }
+
+        .shop-item:active {
+            transform: scale(0.96);
+            background: #517a68;
+        }
+
+        /* 行动按钮区 & 选项按钮区（用于事件分支） */
         .action-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
             gap: 12px;
-            padding: 10px 18px 20px 18px;
+            padding: 6px 18px 20px 18px;
         }
 
         .action-btn {
@@ -163,470 +212,581 @@
             padding: 12px 0;
             border-radius: 60px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             font-family: monospace;
             color: #fff3cf;
-            transition: 0.1s linear;
+            transition: 0.05s linear;
             cursor: pointer;
-            box-shadow: 0 5px 0 #141f1c;
+            box-shadow: 0 4px 0 #17211e;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .action-btn:active {
             transform: translateY(2px);
-            box-shadow: 0 2px 0 #141f1c;
+            box-shadow: 0 1px 0 #17211e;
         }
 
-        .action-btn.reset-btn {
+        .reset-btn {
             background: #5f3e2c;
-            box-shadow: 0 5px 0 #2f241b;
-            color: #ffdd99;
+            box-shadow: 0 4px 0 #2f241b;
             grid-column: span 2;
         }
 
         .action-btn:disabled {
-            opacity: 0.6;
+            opacity: 0.5;
             transform: none;
             cursor: not-allowed;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-6px);}
+            from { opacity: 0; transform: translateX(-5px);}
             to { opacity: 1; transform: translateX(0);}
         }
 
-        /* 自定义滚动条 */
-        .log-area::-webkit-scrollbar {
-            width: 4px;
-        }
-        .log-area::-webkit-scrollbar-track {
-            background: #1d2d28;
-            border-radius: 10px;
-        }
-        .log-area::-webkit-scrollbar-thumb {
-            background: #e2b13b;
-            border-radius: 10px;
-        }
         footer {
-            font-size: 10px;
+            font-size: 9px;
             text-align: center;
-            padding: 12px;
+            padding: 8px;
             color: #6e5940;
             background: #00000066;
-        }
-        @media (max-width: 450px) {
-            .stat-value { font-size: 20px;}
-            .action-btn { font-size: 13px; padding: 10px 0;}
-            .log-area { min-height: 240px;}
         }
     </style>
 </head>
 <body>
-<div class="game-container">
+<div class="game-wrapper">
     <div class="game-header">
-        <h1>🔥 废土求生·文字日记</h1>
-        <div class="sub">「 末日荒野 · 每步都是抉择 」</div>
+        <h1>☢️ 废土求生·抉择版</h1>
+        <div class="sub">「 生存，还是毁灭？每一日都是炼狱 」</div>
     </div>
 
     <div class="stats-panel">
-        <div class="stat-card"><div class="stat-label">📆 生存天数</div><div class="stat-value"><span id="dayCount">1</span><span class="stat-unit"> / 30</span></div></div>
+        <div class="stat-card"><div class="stat-label">📆 生存</div><div class="stat-value" id="dayCount">1</div><div class="stat-label">/30</div></div>
         <div class="stat-card"><div class="stat-label">🍗 食物</div><div class="stat-value" id="foodVal">0</div></div>
         <div class="stat-card"><div class="stat-label">💧 净水</div><div class="stat-value" id="waterVal">0</div></div>
         <div class="stat-card"><div class="stat-label">❤️ 健康</div><div class="stat-value" id="healthVal">0</div></div>
     </div>
 
-    <!-- 文字主战场：事件/行动日志 -->
-    <div class="log-area" id="logArea">
-        <div class="log-entry"><span class="log-date">🔮 废土纪元</span><div class="log-text">你从废弃的地堡中醒来，周围是辐射尘与旧世界的废墟。<br>必须存活30天，等待救援信号。管理食物、水分和健康，每一次选择都将影响命运……</div></div>
-        <div class="log-entry event-good"><span class="log-date">✨ 生存指南</span><div class="log-text">每日自动消耗 <strong>🍗食物-2 / 💧水-3</strong>，健康≤0则游戏结束。<br>利用行动获取资源，随机事件潜伏在废土各处。<br><strong>坚持30天即是胜利！</strong></div></div>
+    <!-- 成就滚动条 -->
+    <div class="achievement-bar" id="achievementBar">
+        <span>🏆 成就：</span>
+        <span id="achieveListDisplay">无</span>
     </div>
 
-    <div class="action-grid" id="actionGrid">
-        <button class="action-btn" data-action="forage">🌿 采集野果</button>
-        <button class="action-btn" data-action="hunt">🏹 狩猎野兽</button>
-        <button class="action-btn" data-action="purify">💧 净化脏水</button>
-        <button class="action-btn" data-action="rest">🛌 扎营休整</button>
-        <button class="action-btn reset-btn" id="resetGameBtn">🔄 重启求生之路</button>
+    <!-- 日志区域 -->
+    <div class="log-area" id="logArea">
+        <div class="log-entry"><span class="log-date">🏚️ 废土纪元</span><div class="log-text">核战后的荒野，辐射尘笼罩。你必须生存30天。<br>每日消耗🍗2食物 + 💧3净水。健康归零则死亡。<br><strong>特殊事件 & 流浪商人会带来转机！</strong></div></div>
     </div>
-    <footer>⚠️ 每个行动都会度过一天 · 随机事件影响生存</footer>
+
+    <!-- 商店卡片 (动态出现) -->
+    <div class="shop-panel" id="shopPanel">
+        <div class="shop-title">🛒 流浪商人 · 限时交易</div>
+        <div class="shop-items" id="shopItemsList"></div>
+    </div>
+
+    <!-- 行动按钮群 -->
+    <div class="action-grid" id="actionGrid">
+        <button class="action-btn" data-action="forage">🌾 采集野果</button>
+        <button class="action-btn" data-action="findWater">💧 找水源</button>
+        <button class="action-btn" data-action="hunt">🏹 狩猎野兽</button>
+        <button class="action-btn" data-action="rest">🛌 休整疗伤</button>
+        <button class="action-btn" data-action="explore">🔍 探索废墟</button>
+        <button class="action-btn reset-btn" id="resetGameBtn">💀 重启废土</button>
+    </div>
+    <footer>⚠️ 每次行动度过一天 + 随机事件 | 商人出现可购买生存物资</footer>
 </div>
 
 <script>
-    // ------------------- 文字生存游戏核心 -------------------
     (function(){
-        // ----- 状态变量 -----
-        let currentDay = 1;            // 当前天数 (1~30)
-        let food = 14;                 // 食物存量
-        let water = 15;               // 淡水存量
-        let health = 82;              // 健康值 0~100
-        let gameActive = true;         // 游戏是否进行中(胜利/失败后禁止操作)
-        let gameWin = false;           // 是否已胜利
+        // ---------- 核心状态 ----------
+        let currentDay = 1;
+        let food = 12;          // 初始食物
+        let water = 14;         // 初始净水
+        let health = 78;        // 健康值
+        let gameActive = true;
+        let gameWin = false;
 
-        // 日志队列最大长度维护 (自动滚动)
-        const logContainer = document.getElementById('logArea');
+        // 成就系统 (存储达成布尔)
+        let achievements = {
+            survivor10: false,   // 存活10天
+            survivor20: false,   // 存活20天
+            fullClear: false,    // 完成30天
+            hunterMaster: false, // 狩猎累计总量 > 40
+            traderFav: false,    // 交易次数>=3
+            neverStarve: false,  // 从未断粮(食物从未<0? 实际控制从未低于0)
+            healthyNuts: false,  // 健康从未低于20并通关
+        };
+        let hunterTotalGain = 0;      // 累计狩猎食物获取量
+        let tradeCount = 0;           // 交易次数
+        let starveFlag = true;         // 从未断粮（一旦食物归零且消耗不足就false）
+        let lowestHealth = 100;
+        
+        // 特殊事件分支锁 (用于避免同时多个事件)
+        let waitingForChoice = false;
+        let pendingChoiceResolve = null;
+        
+        // 商店数据
+        let shopActive = false;
+        let currentShopItems = [];
+
+        // DOM 元素
         const daySpan = document.getElementById('dayCount');
         const foodSpan = document.getElementById('foodVal');
         const waterSpan = document.getElementById('waterVal');
         const healthSpan = document.getElementById('healthVal');
-
-        // 按钮元素列表
-        const actionBtns = document.querySelectorAll('.action-btn[data-action]');
-        const resetBtn = document.getElementById('resetGameBtn');
-
-        // ----- 辅助函数：添加日志消息（带样式分类）-----
+        const logArea = document.getElementById('logArea');
+        const shopPanel = document.getElementById('shopPanel');
+        const shopItemsList = document.getElementById('shopItemsList');
+        const achieveDisplaySpan = document.getElementById('achieveListDisplay');
+        
+        // 辅助函数
         function addLog(message, type = 'normal') {
-            const logDiv = document.createElement('div');
-            logDiv.className = 'log-entry';
-            if (type === 'bad') logDiv.classList.add('event-bad');
-            if (type === 'good') logDiv.classList.add('event-good');
-            
-            const dayMark = document.createElement('span');
-            dayMark.className = 'log-date';
-            dayMark.innerText = `📅 D${currentDay} ·`;
-            const textSpan = document.createElement('div');
-            textSpan.className = 'log-text';
-            textSpan.innerText = message;
-            logDiv.appendChild(dayMark);
-            logDiv.appendChild(textSpan);
-            logContainer.appendChild(logDiv);
-            // 自动滚动到底部
-            logContainer.scrollTop = logContainer.scrollHeight;
-            // 限制日志条目过多时保留最后50条左右(避免过多)
-            while(logContainer.children.length > 55) {
-                logContainer.removeChild(logContainer.firstChild);
-            }
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            if (type === 'bad') entry.classList.add('event-bad');
+            if (type === 'good') entry.classList.add('event-good');
+            const dateSpan = document.createElement('span');
+            dateSpan.className = 'log-date';
+            dateSpan.innerText = `📅 D${currentDay} ·`;
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'log-text';
+            msgDiv.innerText = message;
+            entry.appendChild(dateSpan);
+            entry.appendChild(msgDiv);
+            logArea.appendChild(entry);
+            logArea.scrollTop = logArea.scrollHeight;
+            // 限制条目过多
+            while(logArea.children.length > 60) logArea.removeChild(logArea.firstChild);
         }
 
-        // 更新界面数值
         function updateUI() {
             daySpan.innerText = currentDay;
-            foodSpan.innerText = Math.max(0, Math.floor(food));
-            waterSpan.innerText = Math.max(0, Math.floor(water));
-            healthSpan.innerText = Math.max(0, Math.floor(health));
-            // 根据健康显示颜色 (仅在样式上加强)
-            const healthElem = healthSpan;
-            if (health <= 25) healthElem.style.color = "#ff7b6e";
-            else if (health <= 50) healthElem.style.color = "#f5bc70";
-            else healthElem.style.color = "#f7d44a";
+            foodSpan.innerText = Math.floor(Math.max(0, food));
+            waterSpan.innerText = Math.floor(Math.max(0, water));
+            healthSpan.innerText = Math.floor(Math.max(0, health));
+            if (health <= 25) healthSpan.style.color = "#ff8a7a";
+            else if (health <= 50) healthSpan.style.color = "#f5bc70";
+            else healthSpan.style.color = "#f7d44a";
+            updateAchievementDisplay();
         }
 
-        // 检查游戏失败或胜利
-        function checkGameOver() {
-            if (!gameActive) return true;
-            // 健康归零判负
-            if (health <= 0) {
-                gameActive = false;
-                gameWin = false;
-                addLog("💀 伤势过重，体力衰竭，你倒在了废土的寒风中… 求生之旅就此终结。", "bad");
-                addLog("🏁 游戏结束 — 点击「重启求生之路」再次挑战。", "bad");
-                disableActions(true);
-                return true;
+        // 成就检测与更新
+        function checkAchievements() {
+            if (currentDay >= 10 && !achievements.survivor10) {
+                achievements.survivor10 = true;
+                addLog("🏅 成就解锁：「坚持十天」你已在废土撑过10个昼夜！", "good");
             }
-            // 超过30天胜利
-            if (currentDay > 30) {
-                gameActive = false;
-                gameWin = true;
-                addLog("🏆✨ 第30天黎明，天空传来救援直升机的轰鸣！你挥舞着信号棒，成功离开了废土！✨🏆", "good");
-                addLog("🎉 【伟大幸存者】🎉 你在末日存活整整一个月，人类的意志永不熄灭！感谢游玩！", "good");
-                disableActions(true);
-                return true;
+            if (currentDay >= 20 && !achievements.survivor20) {
+                achievements.survivor20 = true;
+                addLog("🏅 成就解锁：「半月传说」生存超过20天，意志坚韧！", "good");
             }
-            // 如果食物或水严重不足，每日开始会扣到负，但会在消耗前额外警告
-            return false;
+            if (currentDay >= 30 && !achievements.fullClear) {
+                achievements.fullClear = true;
+                addLog("🏆 成就解锁：「废土传奇」存活30天，等来了救援！", "good");
+            }
+            if (hunterTotalGain >= 40 && !achievements.hunterMaster) {
+                achievements.hunterMaster = true;
+                addLog("🏅 成就解锁：「荒野猎手」累计狩猎获得超过40食物！", "good");
+            }
+            if (tradeCount >= 3 && !achievements.traderFav) {
+                achievements.traderFav = true;
+                addLog("🏅 成就解锁：「以物易物」与流浪商人交易3次，精明生存者！", "good");
+            }
+            if (starveFlag && !achievements.neverStarve && currentDay >= 5 && food > 0 && water > 0) {
+                // 从未因为断粮扣除健康（但若扣除过则starveFlag变false）
+                if (starveFlag && !achievements.neverStarve) {
+                    achievements.neverStarve = true;
+                    addLog("🏅 成就解锁：「未雨绸缪」从未因饥渴濒死，资源管理大师！", "good");
+                }
+            }
+            if (lowestHealth > 20 && (currentDay >= 30 || (!gameActive && !gameWin && health<=0))) {
+                // 如果结束且健康从未低于20
+                if (!achievements.healthyNuts && (currentDay>=30 || (!gameActive && health<=0))) {
+                    achievements.healthyNuts = true;
+                    addLog("🏅 成就解锁：「钢铁之躯」整个生存过程健康从未跌破20！", "good");
+                }
+            }
+            updateAchievementDisplay();
         }
 
-        // 每日基础消耗 (食物-2，水-3) 调用前确保当日未消耗过；返回是否存活
-        function dailyConsumption() {
-            if (!gameActive) return false;
-            // 扣除基础消耗
-            let foodCost = 2;
-            let waterCost = 3;
+        function updateAchievementDisplay() {
+            let achievedList = [];
+            if (achievements.survivor10) achievedList.push("10日");
+            if (achievements.survivor20) achievedList.push("20日");
+            if (achievements.fullClear) achievedList.push("满月");
+            if (achievements.hunterMaster) achievedList.push("猎手");
+            if (achievements.traderFav) achievedList.push("商人");
+            if (achievements.neverStarve) achievedList.push("未雨");
+            if (achievements.healthyNuts) achievedList.push("钢铁");
+            if (achievedList.length === 0) achieveDisplaySpan.innerText = "暂无";
+            else achieveDisplaySpan.innerText = achievedList.join(" · ");
+        }
+
+        // 基础每日消耗 (返回是否存活)
+        function applyDailyCost() {
+            let foodCost = 2, waterCost = 3;
             let foodAfter = food - foodCost;
             let waterAfter = water - waterCost;
-            let penaltyLog = [];
-
+            let damageMsg = [];
             if (foodAfter < 0) {
-                // 饥饿惩罚: 每缺少1点食物 -3健康
-                let lackFood = Math.abs(foodAfter);
-                let damage = lackFood * 3;
-                health -= damage;
-                penaltyLog.push(`饥饿折磨: 缺少${lackFood}单位食物, 健康-${damage}`);
+                let lack = -foodAfter;
+                let dmg = lack * 4;
+                health -= dmg;
+                damageMsg.push(`饥饿惩罚 -${dmg}健康`);
+                starveFlag = false;  // 遭受饥荒
                 foodAfter = 0;
             }
             if (waterAfter < 0) {
-                let lackWater = Math.abs(waterAfter);
-                let damage = lackWater * 3;
-                health -= damage;
-                penaltyLog.push(`干渴煎熬: 缺少${lackWater}单位净水, 健康-${damage}`);
+                let lack = -waterAfter;
+                let dmg = lack * 4;
+                health -= dmg;
+                damageMsg.push(`脱水惩罚 -${dmg}健康`);
+                starveFlag = false;
                 waterAfter = 0;
             }
             food = foodAfter;
             water = waterAfter;
-            if (penaltyLog.length > 0) {
-                addLog(`⚠️ 基础消耗未能满足！ ${penaltyLog.join('；')}`, "bad");
+            if (damageMsg.length) {
+                addLog(`🌙 深夜降临，基础消耗未满足！ ${damageMsg.join(' · ')}`, "bad");
             } else {
-                addLog(`🌙 夜降临: 消耗了 2食物 + 3净水。`, "normal");
+                addLog(`🌙 日常消耗: -2食物, -3净水。`, "normal");
             }
-            // 边界限制
-            food = Math.max(0, food);
-            water = Math.max(0, water);
-            if (health <= 0) {
-                updateUI();
-                checkGameOver();
-                return false;
-            }
+            if (health <= 0) return false;
             return true;
         }
 
-        // 随机事件池 (15+独特废土事件, 增加沉浸感)
-        function triggerRandomEvent() {
-            // 只有30%几率触发事件，增加惊喜
-            if (Math.random() > 0.32) return false;
-            const events = [
-                { text: "🌪️ 沙尘暴席卷营地，你躲在岩石后损失了部分物资。", type: "bad", effect: { food: -2, water: -2, health: -3 } },
-                { text: "💊 发现废弃急救箱！使用绷带后健康状况好转。", type: "good", effect: { health: 12, food: 0, water: 0 } },
-                { text: "🍄 误食毒蘑菇，上吐下泻，健康下降。", type: "bad", effect: { health: -10, food: -1 } },
-                { text: "🔧 修好一台老旧净水器，获得大量净水。", type: "good", effect: { water: 8, health: 2 } },
-                { text: "🦂 被变异蝎子蛰伤，健康降低。", type: "bad", effect: { health: -9, food: 0 } },
-                { text: "📻 拾到旧世界罐头仓库，食物大增！", type: "good", effect: { food: 7, health: 2 } },
-                { text: "🌧️ 酸雨突降，你找到防雨布但依然着凉。", type: "bad", effect: { health: -5, water: 2 } },  // 收集到雨水
-                { text: "🤝 遇到流浪商人，用少量食物换到净水。", type: "good", effect: { food: -1, water: 5 } },
-                { text: "⚡ 电击陷阱误伤，健康受创。", type: "bad", effect: { health: -11 } },
-                { text: "📖 找到生存指南，学会更高效采集技巧(永久增益未实现但额外恢复精神)。", type: "good", effect: { health: 5, food: 2 } },
-                { text: "🧥 变异乌鸦群袭击，仓惶逃跑丢失部分粮食。", type: "bad", effect: { food: -3, health: -2 } },
-                { text: "🏚️ 发现废弃地窖，里面存有未过期的军用口粮！", type: "good", effect: { food: 9, health: 3 } },
-                { text: "🧬 辐射尘污染，你感到虚弱。", type: "bad", effect: { health: -7, water: -1 } },
-                { text: "💎 捡到几枚可交易的金币，但你暂时用不上，兑换了能量棒。", type: "good", effect: { food: 4, health: 1 } },
-                { text: "🌿 发现一片野生药草，熬制药汤恢复健康。", type: "good", effect: { health: 14 } },
-                { text: "🕳️ 踩空陷阱，扭伤脚踝，行动力下降(健康减少)。", type: "bad", effect: { health: -8 } }
+        // 随机商店生成 (玩家通过action后触发)
+        function tryGenerateShop() {
+            // 20%几率出现商人, 且游戏活跃, 且当前没有激活的商店面板
+            if (!gameActive || gameWin) return;
+            if (shopActive) return;
+            if (Math.random() > 0.28) return;  // 28%出现
+            
+            // 商品池: 消耗食物或水购买 药品/食物包/水袋/应急工具
+            const possibleItems = [
+                { name: "💊 医疗绷带", costFood: 4, costWater: 0, effect: { health: 18 } },
+                { name: "🥫 军用口粮", costFood: 2, costWater: 3, effect: { food: 8 } },
+                { name: "💧 过滤水壶", costFood: 3, costWater: 2, effect: { water: 9 } },
+                { name: "🍲 营养浓汤", costFood: 1, costWater: 4, effect: { health: 12, food: 3 } },
+                { name: "⚕️ 抗生素", costFood: 5, costWater: 1, effect: { health: 24 } },
+                { name: "🧴 纯净水桶", costFood: 2, costWater: 5, effect: { water: 15 } },
+                { name: "🍖 腌肉干", costFood: 6, costWater: 0, effect: { food: 12 } }
             ];
-            const event = events[Math.floor(Math.random() * events.length)];
-            // 应用效果
-            let effectDesc = [];
-            if (event.effect.food) {
-                let newFood = food + event.effect.food;
-                food = Math.max(0, newFood);
-                effectDesc.push(`${event.effect.food > 0 ? '+' : ''}${event.effect.food}食物`);
-            }
-            if (event.effect.water) {
-                water = Math.max(0, water + event.effect.water);
-                effectDesc.push(`${event.effect.water > 0 ? '+' : ''}${event.effect.water}净水`);
-            }
-            if (event.effect.health) {
-                health = Math.max(0, health + event.effect.health);
-                effectDesc.push(`${event.effect.health > 0 ? '+' : ''}${event.effect.health}健康`);
-            }
-            const effectStr = effectDesc.length ? ` (${effectDesc.join(', ')})` : '';
-            addLog(`${event.text} ${effectStr}`, event.type);
-            updateUI();
-            return true;
+            // 随机3个商品
+            const shuffled = [...possibleItems].sort(() => 0.5 - Math.random());
+            currentShopItems = shuffled.slice(0, 3);
+            shopActive = true;
+            renderShop();
+            shopPanel.style.display = "flex";
+            addLog("🔔 远处传来驼铃声，流浪商人出现了！可以用食物/净水交换珍贵物资。", "good");
         }
 
-        // 执行行动动作 (action类型)
-        async function performAction(action) {
-            if (!gameActive) {
-                addLog("游戏已经结束，请点击「重启求生之路」重新开始。", "bad");
+        function renderShop() {
+            shopItemsList.innerHTML = "";
+            currentShopItems.forEach((item, idx) => {
+                const btn = document.createElement("div");
+                btn.className = "shop-item";
+                btn.innerText = `${item.name}  🍗${item.costFood} 💧${item.costWater}`;
+                btn.onclick = () => purchaseItem(idx);
+                shopItemsList.appendChild(btn);
+            });
+            const closeBtn = document.createElement("div");
+            closeBtn.className = "shop-item";
+            closeBtn.innerText = "❌ 离开";
+            closeBtn.onclick = () => closeShop();
+            shopItemsList.appendChild(closeBtn);
+        }
+
+        function purchaseItem(idx) {
+            if (!shopActive || !gameActive) return;
+            const item = currentShopItems[idx];
+            if (food >= item.costFood && water >= item.costWater) {
+                food -= item.costFood;
+                water -= item.costWater;
+                if (item.effect.health) health += item.effect.health;
+                if (item.effect.food) food += item.effect.food;
+                if (item.effect.water) water += item.effect.water;
+                health = Math.min(100, health);
+                tradeCount++;
+                addLog(`🛒 交易成功！用 ${item.costFood}食物+${item.costWater}水 换得 ${item.name}，资源变化: ${item.effect.health?`健康+${item.effect.health}`:''} ${item.effect.food?`食物+${item.effect.food}`:''} ${item.effect.water?`水+${item.effect.water}`:''}`, "good");
+                checkAchievements();
+                updateUI();
+                closeShop();
+                // 交易后自动关闭商店，并且不再重复出现
+            } else {
+                addLog(`🥺 资源不足，无法购买 ${item.name} (需要🍗${item.costFood} 💧${item.costWater})`, "bad");
+            }
+        }
+
+        function closeShop() {
+            shopPanel.style.display = "none";
+            shopActive = false;
+        }
+
+        // 复杂特殊事件（分支选择）
+        function triggerComplexEvent(resumeCallback) {
+            // 多种分支事件池
+            const eventPool = [
+                {
+                    title: "🏚️ 废弃避难所",
+                    desc: "你发现一座半塌的避难所，里面有一台老旧的发报机和一个保险箱。",
+                    options: [
+                        { text: "🔓 尝试破解保险箱 (耗费精力)", effect: ()=> { let gain = Math.floor(Math.random()*12)+5; food+=gain; addLog(`保险箱打开！获得 ${gain} 食物！`, "good"); } },
+                        { text: "📡 发送求救信号 (消耗健康)", effect: ()=> { health -= 6; addLog("你发射了信号弹，但引来变异生物袭击，健康-6", "bad"); } }
+                    ]
+                },
+                {
+                    title: "👥 拾荒者营地",
+                    desc: "一群拾荒者愿意用物资交换你的情报。",
+                    options: [
+                        { text: "🤝 分享食物换取净水", effect: ()=>{ if(food>=4){ food-=4; water+=8; addLog("给出一部分食物，换来8净水", "good");} else addLog("你食物不足，被赶走了...", "bad"); } },
+                        { text: "⚔️ 武力威胁夺取资源", effect: ()=>{ health -= 8; let loot = 6; food += loot; addLog(`火拼受伤-8健康，但抢到${loot}食物。`, "bad"); } }
+                    ]
+                },
+                {
+                    title: "🌊 辐射暴雨",
+                    desc: "暴雨携带着微量辐射尘，你必须立刻选择躲藏方式。",
+                    options: [
+                        { text: "🏞️ 躲进山洞 (安全)", effect: ()=>{ addLog("你躲入山洞，安然度过暴雨", "good"); } },
+                        { text: "☢️ 用塑料布遮盖 (中毒风险)", effect: ()=>{ let dmg = Math.floor(Math.random()*11)+5; health-=dmg; addLog(`塑料布被吹飞，辐射灼伤健康-${dmg}`, "bad"); } }
+                    ]
+                },
+                {
+                    title: "🚁 坠毁无人机",
+                    desc: "一架军用无人机残骸，里面似乎有补给，但有自爆风险。",
+                    options: [
+                        { text: "🛡️ 小心拆除 (概率成功)", effect: ()=> { if(Math.random()<0.7){ food+=12; water+=6; addLog("成功拆解，获得大量食物+12，净水+6！", "good");} else { health-=15; addLog("触发爆炸，重伤-15健康", "bad");} } },
+                        { text: "💣 直接放弃离开", effect: ()=> { addLog("你远离危险，什么都没发生", "normal"); } }
+                    ]
+                },
+                {
+                    title: "🐺 变异狼群",
+                    desc: "饥肠辘辘的变异狼包围了你！",
+                    options: [
+                        { text: "🏹 搏杀狼群", effect: ()=> { let dmg = Math.floor(Math.random()*12)+4; health -= dmg; let meat = 10; food += meat; addLog(`惨胜，获得+${meat}肉，健康-${dmg}`, "bad"); } },
+                        { text: "🍖 扔食物引开狼群", effect: ()=>{ if(food>=5){ food-=5; addLog("扔出5食物成功脱身", "good");} else{ health-=12; addLog("没有食物可扔，被咬伤-12健康", "bad");} } }
+                    ]
+                }
+            ];
+            const event = eventPool[Math.floor(Math.random() * eventPool.length)];
+            addLog(`❗️【特殊事件】${event.title}：${event.desc}`, "event-choice");
+            // 临时显示选项在 action 区域上方?
+            waitingForChoice = true;
+            const actionContainer = document.getElementById('actionGrid');
+            const originalButtons = Array.from(actionContainer.querySelectorAll('.action-btn:not(.reset-btn)'));
+            const resetBtn = document.getElementById('resetGameBtn');
+            // 隐藏原有行动按钮
+            originalButtons.forEach(btn => btn.style.display = 'none');
+            resetBtn.style.display = 'none';
+            // 创建选项按钮
+            const optionDiv = document.createElement('div');
+            optionDiv.style.cssText = "display: flex; gap: 8px; flex-wrap: wrap; grid-column: span 2; justify-content: center; margin: 8px 0;";
+            event.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'action-btn';
+                btn.style.background = "#4a3a28";
+                btn.innerText = opt.text;
+                btn.onclick = () => {
+                    // 执行效果
+                    opt.effect();
+                    updateUI();
+                    // 清理选项
+                    optionDiv.remove();
+                    originalButtons.forEach(btn => btn.style.display = 'flex');
+                    resetBtn.style.display = 'flex';
+                    waitingForChoice = false;
+                    // 继续行动回调
+                    if (resumeCallback) resumeCallback();
+                };
+                optionDiv.appendChild(btn);
+            });
+            actionContainer.insertBefore(optionDiv, actionContainer.firstChild);
+        }
+
+        // 核心行动处理 (异步可能等待事件)
+        async function performAction(actionType) {
+            if (!gameActive || gameWin) {
+                addLog("游戏已结束，重置后继续挑战吧。", "bad");
                 return;
             }
-            if (gameWin) return;
-
-            // 1) 先判定今日基础消耗 (新的一日)
-            // 注意：消耗之前检查健康是否已经死亡
-            let consumeOk = dailyConsumption();
-            updateUI();
-            if (checkGameOver()) return;
-            if (!consumeOk) return;
-            
-            // 记录行动前的状态，防止负资源警告
-            let actionResultMsg = "";
-
-            // ----- 根据行动类型获得增益/减益 -----
-            switch(action) {
-                case 'forage':  // 采集野果
-                    {
-                        let gainFood = Math.floor(Math.random() * 7) + 2;  // 2~8食物
-                        let risk = Math.random();
-                        if (risk < 0.2) {
-                            // 中毒风险
-                            let poison = Math.floor(Math.random() * 7) + 3;
-                            health -= poison;
-                            actionResultMsg = `🍓 采集到野果 +${gainFood}食物，但误食毒果健康-${poison}。`;
-                            addLog(actionResultMsg, "bad");
-                        } else {
-                            food += gainFood;
-                            actionResultMsg = `🌿 你在灌木丛中采集到野果 +${gainFood}食物，勉强果腹。`;
-                            addLog(actionResultMsg, "good");
-                        }
-                    }
-                    break;
-                case 'hunt':   // 狩猎野兽
-                    {
-                        let gainFood = Math.floor(Math.random() * 13) + 5; // 5~17肉
-                        let staminaCost = Math.floor(Math.random() * 8) + 2; // 消耗健康2~9
-                        health -= staminaCost;
-                        food += gainFood;
-                        actionResultMsg = `🏹 狩猎成功! 获得 +${gainFood} 肉类，但搏斗中受伤健康-${staminaCost}`;
-                        // 附加小概率完美狩猎
-                        if (Math.random() < 0.2) {
-                            let extra = Math.floor(Math.random() * 6) + 3;
-                            food += extra;
-                            actionResultMsg += `，额外发现猎物 +${extra}食物！`;
-                            addLog(actionResultMsg, "good");
-                        } else {
-                            addLog(actionResultMsg, health - staminaCost > 0 ? "normal" : "bad");
-                        }
-                    }
-                    break;
-                case 'purify':  // 净化脏水
-                    {
-                        let gainWater = Math.floor(Math.random() * 9) + 4; // 4~12
-                        water += gainWater;
-                        let contamRisk = Math.random();
-                        if (contamRisk < 0.15) {
-                            let ill = Math.floor(Math.random() * 7) + 2;
-                            health -= ill;
-                            actionResultMsg = `💧 净化出 +${gainWater}净水，但水源含微量辐射，健康-${ill}`;
-                            addLog(actionResultMsg, "bad");
-                        } else {
-                            actionResultMsg = `✨ 通过过滤煮沸获得净水 +${gainWater}，水源充足了一些。`;
-                            addLog(actionResultMsg, "good");
-                        }
-                    }
-                    break;
-                case 'rest':   // 扎营休整
-                    {
-                        let recover = Math.floor(Math.random() * 12) + 5; // 5~16健康
-                        health += recover;
-                        // 休息时消耗额外0.5食物? 为了平衡不消耗额外资源，但可能遇到小意外
-                        let badRest = Math.random();
-                        if (badRest < 0.1) {
-                            let loss = Math.floor(Math.random() * 3) + 1;
-                            food = Math.max(0, food - loss);
-                            actionResultMsg = `⛺ 扎营休息恢复了 +${recover} 健康，但半夜被野狗偷走 ${loss} 食物。`;
-                            addLog(actionResultMsg, "bad");
-                        } else {
-                            actionResultMsg = `🛌 安稳休整，伤口愈合，健康 +${recover} 。精神焕发。`;
-                            addLog(actionResultMsg, "good");
-                        }
-                    }
-                    break;
-                default: return;
+            if (waitingForChoice) {
+                addLog("请先完成当前特殊事件的选择！", "bad");
+                return;
             }
+            // 关闭商店（新的一天商店消失）
+            if(shopActive) closeShop();
             
-            // 数值边界保护
+            // 1. 先消耗每日口粮
+            const survive = applyDailyCost();
+            updateUI();
+            if (!survive || health <= 0) {
+                gameActive = false;
+                addLog("💀 你没能扛过废土的残酷……游戏结束。", "bad");
+                disableActions(true);
+                updateUI();
+                return;
+            }
+            // 行动效果
+            let actionMsg = "";
+            let actionBonus = {};
+            switch(actionType) {
+                case 'forage':
+                    let gainF = Math.floor(Math.random() * 8) + 3; // 3-10
+                    food += gainF;
+                    actionMsg = `🌿 采集野果 +${gainF} 食物。`;
+                    if (Math.random() < 0.15) { let dmg = 3; health -= dmg; actionMsg += ` 但误食毒果健康-${dmg}`; }
+                    addLog(actionMsg, gainF>5?"good":"normal");
+                    break;
+                case 'findWater':
+                    let gainW = Math.floor(Math.random() * 9) + 4; // 4-12
+                    water += gainW;
+                    actionMsg = `💧 找到干净水源 +${gainW} 净水。`;
+                    if (Math.random() < 0.2) { let dmg = 4; health -= dmg; actionMsg += ` 遭遇辐射渗透健康-${dmg}`; }
+                    addLog(actionMsg, gainW>7?"good":"normal");
+                    break;
+                case 'hunt':
+                    let meat = Math.floor(Math.random() * 13) + 6; // 6~18
+                    food += meat;
+                    hunterTotalGain += meat;
+                    let injury = Math.floor(Math.random() * 9) + 2;
+                    health -= injury;
+                    addLog(`🏹 狩猎获得 +${meat} 肉，搏斗受伤-${injury}健康`, injury>8?"bad":"normal");
+                    checkAchievements();
+                    break;
+                case 'rest':
+                    let recover = Math.floor(Math.random() * 14) + 6;
+                    health += recover;
+                    addLog(`🛌 休整恢复 +${recover} 健康，伤口愈合。`, "good");
+                    break;
+                case 'explore':
+                    addLog(`🔍 你在废墟中翻找...`, "normal");
+                    // 探索额外奖励或者直接触发事件
+                    let r = Math.random();
+                    if (r < 0.4) {
+                        let extraFood = Math.floor(Math.random() * 7)+2;
+                        let extraWater = Math.floor(Math.random() * 6)+2;
+                        food += extraFood; water += extraWater;
+                        addLog(`✨ 拾到旧物资 +${extraFood}食物 +${extraWater}净水`, "good");
+                    } else if (r < 0.7) {
+                        // 触发特殊分支事件
+                        addLog("❗ 你在探索时触发了异常状况...", "normal");
+                        // 异步等待分支选择
+                        return new Promise((resolve) => {
+                            triggerComplexEvent(() => {
+                                // 事件完成后推进天数并检查商店
+                                finalizeDayAfterAction(resolve);
+                            });
+                        });
+                    } else {
+                        addLog("🍃 废墟里空空如也，只有风声。", "normal");
+                    }
+                    break;
+                default: break;
+            }
+            // 边界修正
             food = Math.max(0, food);
             water = Math.max(0, water);
             health = Math.min(100, Math.max(0, health));
             updateUI();
-
-            // 检查死亡风险
             if (health <= 0) {
-                checkGameOver();
+                gameActive = false;
+                addLog("💀 伤势过重，你倒在了废土上……", "bad");
+                disableActions(true);
                 return;
             }
+            // 行动结束后推进天数
+            finalizeDayAfterAction();
+        }
 
-            // 触发随机事件（增强废土变数）
-            triggerRandomEvent();
-            
-            // 进一步检查数值溢出
-            updateUI();
-            if (health <= 0) {
-                checkGameOver();
-                return;
-            }
-
-            // 天数推进 (+1)
+        // 完成一天结算（天数+1，商店触发，胜利判断）
+        function finalizeDayAfterAction(customResolve=null) {
             currentDay++;
             updateUI();
-            
-            // 胜利判定（第31天抵达则胜利）
+            checkAchievements();
+            // 胜利判断
             if (currentDay > 30) {
-                checkGameOver();
+                gameActive = false;
+                gameWin = true;
+                addLog("✨🌟 第30天曙光降临！救援直升机找到你，英雄凯旋！🌟✨", "good");
+                addLog("🏆 废土求生成功！感谢你的坚持，点击重启继续挑战成就。", "good");
+                disableActions(true);
+                if(customResolve) customResolve();
                 return;
             }
-            
-            // 每日小结预警: 若食物/水严重不足添加提示
-            if (food <= 2 && gameActive) {
-                addLog(`⚠️ 饥荒逼近！只剩 ${Math.floor(food)} 单位食物，必须尽快寻觅食物！`, "bad");
+            // 尝试生成商店（新的一天概率出现）
+            tryGenerateShop();
+            // 额外随机特殊事件（非探索触发也可有, 10%概率直接简单事件但有分支）
+            if (!waitingForChoice && Math.random() < 0.2 && gameActive) {
+                // 轻度事件：不影响分支锁
+                const simpleEvents = [
+                    { text: "🌧️ 一场夜雨帮你收集到2净水", good:true, effect:()=>{ water+=2; }},
+                    { text: "🦟 蚊虫叮咬感染，健康-4", good:false, effect:()=>{ health-=4; }},
+                    { text: "🍄 发现可食用蘑菇 +3食物", good:true, effect:()=>{ food+=3; }},
+                ];
+                let ev = simpleEvents[Math.floor(Math.random()*simpleEvents.length)];
+                ev.effect();
+                addLog(ev.text, ev.good?"good":"bad");
+                updateUI();
+                if(health<=0){ gameActive=false; disableActions(true); addLog("你没能撑过感染...", "bad");}
             }
-            if (water <= 2 && gameActive) {
-                addLog(`⚠️ 脱水警告！净水仅剩 ${Math.floor(water)} 单位，干渴会夺走生命！`, "bad");
-            }
-            if (health <= 25 && gameActive) {
-                addLog(`🩸 体弱多病，濒死边缘，休息或医疗迫在眉睫！`, "bad");
-            }
-            // 滚动日志
-            updateUI();
+            if(customResolve) customResolve();
         }
 
-        // 禁用/启用行动按钮 (游戏结束)
         function disableActions(disabled) {
-            actionBtns.forEach(btn => {
-                if (disabled) btn.disabled = true;
-                else btn.disabled = false;
-            });
+            const btns = document.querySelectorAll('.action-btn[data-action]');
+            btns.forEach(btn => btn.disabled = disabled);
         }
 
-        // 重置游戏全部状态
         function resetGame() {
-            // 重置变量
-            currentDay = 1;
-            food = 14;
-            water = 15;
-            health = 82;
             gameActive = true;
             gameWin = false;
-            // 清空日志 (保留两条引导)
-            while(logContainer.firstChild) {
-                logContainer.removeChild(logContainer.firstChild);
-            }
-            // 添加初始欢迎信息
-            const intro1 = document.createElement('div');
-            intro1.className = 'log-entry';
-            intro1.innerHTML = '<span class="log-date">🔮 废土重启</span><div class="log-text">你从废弃的地堡中醒来，周围是辐射尘与旧世界的废墟。<br>必须存活30天，等待救援信号。管理食物、水分和健康，每一次选择都将影响命运……</div>';
-            const intro2 = document.createElement('div');
-            intro2.className = 'log-entry event-good';
-            intro2.innerHTML = '<span class="log-date">✨ 生存指南</span><div class="log-text">每日自动消耗 <strong>🍗食物-2 / 💧水-3</strong>，健康≤0则游戏结束。<br>利用行动获取资源，随机事件潜伏在废土各处。<br><strong>坚持30天即是胜利！</strong></div>';
-            logContainer.appendChild(intro1);
-            logContainer.appendChild(intro2);
-            
+            waitingForChoice = false;
+            if(shopActive) closeShop();
+            currentDay = 1;
+            food = 12;
+            water = 14;
+            health = 78;
+            hunterTotalGain = 0;
+            tradeCount = 0;
+            starveFlag = true;
+            lowestHealth = 100;
+            achievements = {
+                survivor10: false, survivor20: false, fullClear: false,
+                hunterMaster: false, traderFav: false, neverStarve: false, healthyNuts: false
+            };
+            // 清空日志并添加初始消息
+            while(logArea.firstChild) logArea.removeChild(logArea.firstChild);
+            const intro = document.createElement('div'); intro.className='log-entry';
+            intro.innerHTML = '<span class="log-date">🏚️ 废土重启</span><div class="log-text">核战后的荒野，辐射尘笼罩。你必须生存30天。<br>每日消耗🍗2食物 + 💧3净水。健康归零则死亡。<br><strong>特殊事件 & 流浪商人会带来转机！</strong></div>';
+            logArea.appendChild(intro);
+            addLog("🔄 你开始新一轮求生，废土依然残酷，但多了一份警觉。", "good");
             updateUI();
             disableActions(false);
-            addLog("🏕️ 新的求生之旅开始！前方废土危险且迷人，努力活过30天！", "good");
+            updateAchievementDisplay();
         }
 
-        // 绑定按钮事件
+        // 绑定按钮
         function bindEvents() {
-            actionBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (!gameActive) {
-                        addLog("游戏已终结，点击「重启求生之路」继续挑战。", "bad");
-                        return;
-                    }
-                    const actionType = btn.getAttribute('data-action');
-                    if (actionType) {
-                        performAction(actionType);
-                    }
+            document.querySelectorAll('.action-btn[data-action]').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    if (!gameActive) { addLog("游戏已结束，请重置。", "bad"); return; }
+                    const act = btn.getAttribute('data-action');
+                    await performAction(act);
                 });
             });
-            resetBtn.addEventListener('click', () => {
-                resetGame();
-            });
+            document.getElementById('resetGameBtn').addEventListener('click', () => resetGame());
         }
 
-        // 初始化启动
-        function init() {
-            updateUI();
-            bindEvents();
-            gameActive = true;
-            gameWin = false;
-            disableActions(false);
-        }
-        init();
+        // 初始化
+        updateUI();
+        bindEvents();
+        disableActions(false);
+        updateAchievementDisplay();
+        // 保证最低健康记录
+        setInterval(() => { if(health < lowestHealth && gameActive) lowestHealth = health; }, 100);
     })();
 </script>
 </body>
